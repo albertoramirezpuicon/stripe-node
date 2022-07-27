@@ -1,4 +1,6 @@
-const bodyParser = require('body-parser');
+const https = require("https");
+// const fs = request("fs");
+
 const express = require("express");
 const app = express();
 
@@ -34,4 +36,7 @@ app.post("/create-payment-intent", async (req, res) => {
   });
 });
 
-app.listen(4242, () => console.log("Node server listening on port 4242!"));
+https
+  .createServer(app)
+  .listen(80, () => console.log("Node server listening on port 4242!"));
+// app.listen(4242, () => console.log("Node server listening on port 4242!"));

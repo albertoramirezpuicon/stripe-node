@@ -1,11 +1,17 @@
 // This is your test publishable API key.
 const stripe = Stripe("pk_test_51LLEpPDWBDilbjeOHhDUOX8AlMPc9sE1WmnzXG1xLG6XuQE63UANMdfXOfUZADBBAJjAAb2W3zjJATMXZp5F64Hs00AFrWHO82");
 
-// The items the customer wants to buy
-const thisUrl = document.URL;
-const splitter1 = thisUrl.split("?");
-const splitter2 = splitter1[1].split("=")
-const priceId = splitter2[1];
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+
+let priceId = params.priceId;
+let productId = params.productId;
+let merchantId = params.merchantId;
+let merchOrderNumber = params.merchOrderNumber;
+let email = params.email;
+
+let fwdUrl = "https://silent.dalces.com/PaymentTest/StripeProcessing.aspx?merchantId=" + merchantId + "&merchOrderNumber=" + merchOrderNumber + "&productId=" + productId + "&email=" + email
 
 let elements;
 
@@ -42,8 +48,7 @@ async function handleSubmit(e) {
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
-      return_url: "http://localhost:4242/success.html",
-      // return_url: "http://silent.dalces.com/success.html",
+      return_url: fwdUrl,
     },
   });
 

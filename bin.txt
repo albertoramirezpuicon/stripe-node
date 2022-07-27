@@ -1,0 +1,31 @@
+http://localhost:4242/checkout.html?priceId=price_1LMoWHDWBDilbjeO34Ho4lQj&merchandId=10028&productId=674437&merchOrderNumber=AXV32&email=aa@aa.com
+
+priceId=xxxx&merchantId=10005&customerIp=12.12.12.134&email=aa@aa.com&merchOrderNumber=12345
+
+
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+
+
+// The items the customer wants to buy
+const thisUrl = document.URL;
+const splitter1 = thisUrl.split("?");
+// splitter1[1] contains all the querystring, now we need to split it by key/value pairs
+const keyvalues = splitter1[1].split("&")
+// create a multidimensional array containing all key value pairs
+let keyValueArray = [];
+keyvalues.forEach(fillKeyValueArray);
+function fillKeyValueArray(item){
+  
+}
+
+const priceId = splitter2[1];
+
+CREATOR OWNER special
+IUSR read
+SYSTEM all
+CERTIFICATE USER all
+USERS read & exec, list, read
+IIS_USRS read & exec, list, read
+silent.dalces.com read
